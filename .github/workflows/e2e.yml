@@ -3,8 +3,43 @@ name: E2E
 on:
   workflow_dispatch:
 
+# https://tauri.app/v1/guides/testing/webdriver/ci
 jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "WIP"
+      - uses: actions/checkout@v4
+
+      # install system dependencies that Tauri needs to compile on Linux.
+      # note the extra dependencies for `tauri-driver` to run which are: `webkit2gtk-driver` and `xvfb`
+      - name: Tauri dependencies
+        run: >-
+          sudo apt-get update &&
+          sudo apt-get install -y
+          libgtk-3-dev
+          libayatana-appindicator3-dev
+          libwebkit2gtk-4.0-dev
+          webkit2gtk-driver
+          xvfb
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build:linux
+
+      # install the latest version of `tauri-driver`.
+      # note: the tauri-driver version is independent of any other Tauri versions
+      - run: cargo install tauri-driver
+
+      # run the WebdriverIO test suite.
+      # we run it through `xvfb-run` (the dependency we installed earlier) to have a fake
+      # display server which allows our application to run headless without any changes to the code
+      - run: xvfb-run pnpm turbo run test --filter=e2e

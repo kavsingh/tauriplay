@@ -5,12 +5,14 @@
 		"type": "git",
 		"url": "git@github.com:kavsingh/tauri-mono"
 	},
-	"type": "module",
 	"license": "MIT",
+	"private": true,
 	"packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589",
 	"scripts": {
 		"dev": "pnpm turbo dev",
+		"build:linux": "pnpm turbo build:linux",
 		"build:mac": "pnpm turbo build:mac",
+		"build:win": "pnpm turbo build:win",
 		"test": "pnpm turbo test",
 		"typecheck": "pnpm turbo typecheck",
 		"lint": "pnpm turbo lint"
@@ -30,6 +32,7 @@
 		"eslint-plugin-prettier": "5.1.3",
 		"prettier": "3.2.5",
 		"rimraf": "5.0.5",
+		"ts-node": "10.9.2",
 		"tsx": "4.7.1",
 		"turbo": "1.13.0",
 		"typescript": "5.4.3"

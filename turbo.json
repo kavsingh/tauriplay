@@ -5,6 +5,10 @@
 			"outputs": ["dist/**"],
 			"dependsOn": ["^build"]
 		},
+		"build:linux": {
+			"outputs": ["dist/**"],
+			"dependsOn": ["^build"]
+		},
 		"build:mac": {
 			"outputs": ["dist/**"],
 			"dependsOn": ["^build"]
