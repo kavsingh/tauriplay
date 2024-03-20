@@ -12,7 +12,7 @@ jobs:
 
       # install system dependencies that Tauri needs to compile on Linux.
       # note the extra dependencies for `tauri-driver` to run which are: `webkit2gtk-driver` and `xvfb`
-      - run: |
+      - run: >-
           sudo apt-get update &&
           sudo apt-get install -y
           libgtk-3-dev
