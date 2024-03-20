@@ -13,9 +13,8 @@
 		"before:dev": "pnpm build:isolation && vite dev",
 		"before:build": "pnpm build:isolation && rimraf ./dist && vite build",
 		"dev": "tauri dev",
-		"build:linux": "tauri build",
+		"build": "tauri build",
 		"build:mac": "tauri build --target universal-apple-darwin",
-		"build:win": "tauri build",
 		"build:isolation": "rimraf ./dist-isolation && vite -c vite.isolation.config.ts build",
 		"testscript": "node --import=tsx scripts/testscript.ts"
 	},
