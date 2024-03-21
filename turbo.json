@@ -9,10 +9,6 @@
 			"outputs": ["dist/**"],
 			"dependsOn": ["^build"]
 		},
-		"build:win": {
-			"outputs": ["dist/**"],
-			"dependsOn": ["^build"]
-		},
 		"dev": {
 			"cache": false,
 			"persistent": true

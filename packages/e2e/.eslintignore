@@ -1,0 +1,7 @@
+**/.rollup.cache
+**/node_modules
+**/.dist
+**/dist-isolation
+**/coverage
+**/src-tauri
+**/__generated__/
